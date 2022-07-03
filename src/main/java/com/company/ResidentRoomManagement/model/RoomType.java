@@ -25,4 +25,5 @@ public class RoomType extends BaseEntity {
     private String description;
 
     private double price;
+
 }

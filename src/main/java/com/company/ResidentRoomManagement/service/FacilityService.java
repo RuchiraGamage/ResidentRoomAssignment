@@ -10,4 +10,6 @@ public interface FacilityService {
     Facility saveNewFacility(FacilityDTO facility) throws SQLException;
 
     List<Facility> getAllFacilitiesByAdminId(Long adminId);
+
+    Facility addRoomToFacility(Long adminId, Long roomId, Long facilityId);
 }

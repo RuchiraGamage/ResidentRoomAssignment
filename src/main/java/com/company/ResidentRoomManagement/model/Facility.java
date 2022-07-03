@@ -36,7 +36,6 @@ public class Facility extends BaseEntity {
     private User facilityAdmin;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "facilities")
-    @JsonIgnoreProperties({"facilities"})
     private List<Room> rooms = new ArrayList<>();
 
     public Facility(String name, String code, String description, double price) {

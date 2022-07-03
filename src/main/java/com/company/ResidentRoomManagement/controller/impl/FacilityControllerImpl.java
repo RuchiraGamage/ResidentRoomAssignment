@@ -52,4 +52,20 @@ public class FacilityControllerImpl implements FacilityController {
 
         return response;
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> addRoomToFacility(Long facilityId, Long adminId, Long roomId) {
+        ResponseEntity<ApiResponse> response = null;
+
+        try {
+            Facility savedInstance = facilityService.addRoomToFacility(adminId, roomId,facilityId);
+            response = new ResponseEntity<>(new ApiResponse(true, "Room added to facility", savedInstance), HttpStatus.OK);
+
+        } catch (Exception e) {
+            response = new ResponseEntity<>(new ApiResponse(false, "Fail to add room to facility", null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return response;
+    }
+
 }
