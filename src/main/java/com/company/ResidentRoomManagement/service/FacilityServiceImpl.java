@@ -38,8 +38,8 @@ public class FacilityServiceImpl implements FacilityService {
     public Facility addRoomToFacility(Long adminId, Long roomId, Long facilityId) {
         Facility fac = facilityRepository.findById(facilityId).get();
         Room room = roomRepository.getById(roomId);
-        room.getFacilities().add(fac);
-        fac.getRooms().add(room);
+
+        fac.addRoom(room);
 
         return facilityRepository.saveAndFlush(fac);
     }

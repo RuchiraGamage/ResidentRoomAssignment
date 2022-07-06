@@ -15,6 +15,8 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FacilityDTO implements Serializable {
 
+    private long id;
+
     private String name;
 
     private String code;

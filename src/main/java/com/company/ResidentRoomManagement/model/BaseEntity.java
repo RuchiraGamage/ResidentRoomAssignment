@@ -23,5 +23,5 @@ public abstract class BaseEntity implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected long id;
+    public long id;
 }

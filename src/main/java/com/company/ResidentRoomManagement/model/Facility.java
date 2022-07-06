@@ -2,6 +2,7 @@ package com.company.ResidentRoomManagement.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,11 +18,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_facility")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Facility extends BaseEntity {
 
     private String name;
@@ -35,7 +35,8 @@ public class Facility extends BaseEntity {
     @OneToOne
     private User facilityAdmin;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "facilities")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "tbl_facility_room", joinColumns = {@JoinColumn(name = "facility_id")}, inverseJoinColumns = {@JoinColumn(name = "room_id")})
     private List<Room> rooms = new ArrayList<>();
 
     public Facility(String name, String code, String description, double price) {
@@ -43,5 +44,20 @@ public class Facility extends BaseEntity {
         this.code = code;
         this.description = description;
         this.price = price;
+    }
+
+    @JsonIgnore
+    public void addRoom(Room room) {
+        this.rooms.add(room);
+        room.getFacilities().add(this);
+    }
+
+    @JsonIgnore
+    public void deleteRooms(Room r) {
+        Room rm = this.rooms.stream().filter(room -> room.id == r.getId()).findFirst().orElse(null);
+        if (rm != null){
+            this.rooms.remove(rm);
+            rm.getFacilities().remove(this);
+        }
     }
 }

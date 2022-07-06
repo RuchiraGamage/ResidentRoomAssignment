@@ -54,11 +54,11 @@ public class FacilityControllerImpl implements FacilityController {
     }
 
     @Override
-    public ResponseEntity<ApiResponse> addRoomToFacility(Long facilityId, Long adminId, Long roomId) {
+    public ResponseEntity<ApiResponse> addRoomToFacility(Long adminId, Long roomId, FacilityDTO facilityDTO) {
         ResponseEntity<ApiResponse> response = null;
 
         try {
-            Facility savedInstance = facilityService.addRoomToFacility(adminId, roomId,facilityId);
+            Facility savedInstance = facilityService.addRoomToFacility(adminId, roomId,facilityDTO.getId());
             response = new ResponseEntity<>(new ApiResponse(true, "Room added to facility", savedInstance), HttpStatus.OK);
 
         } catch (Exception e) {

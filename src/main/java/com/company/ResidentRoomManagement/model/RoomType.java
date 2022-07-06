@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_room_type")
