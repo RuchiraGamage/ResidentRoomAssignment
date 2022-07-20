@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -34,5 +35,45 @@ public class RoomControllerImpl implements RoomController {
             response = new ResponseEntity<>(new ApiResponse(Error.ERROR,false, "fail room save",null), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return response;
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> addResidentToRoom(Long roomId, Long residentId) {
+        ResponseEntity<ApiResponse> response;
+        try {
+            Room updatedInstance = roomService.addResidentToRoom(roomId,residentId);
+            response = new ResponseEntity<>(new ApiResponse(true,"resident added to room",updatedInstance), HttpStatus.OK);
+
+        }catch (Exception e){
+            response = new ResponseEntity<>(new ApiResponse(Error.ERROR, false,"fail add resident to room : "+ e.getMessage(),null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return response;
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> removeResidentFromRoom(Long roomId, Long residentId) {
+        ResponseEntity<ApiResponse> response;
+        try {
+            Room updatedInstance = roomService.removeResidentFromRoom(roomId,residentId);
+            response = new ResponseEntity<>(new ApiResponse(true,"resident removed from room",updatedInstance), HttpStatus.OK);
+
+        }catch (Exception e){
+            response = new ResponseEntity<>(new ApiResponse(Error.ERROR, false,"fail remove resident from room : "+ e.getMessage(),null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return response;
+    }
+
+    @Override
+    public ResponseEntity<ApiResponse> getAllRooms() {
+        ResponseEntity<ApiResponse> response;
+        try {
+            List<Room> rooms = roomService.getAllRoom();
+            response = new ResponseEntity<>(new ApiResponse(true,"resident removed from room",rooms), HttpStatus.OK);
+
+        }catch (Exception e){
+            response = new ResponseEntity<>(new ApiResponse(Error.ERROR, false,"fail getting all rooms : "+ e.getMessage(),null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return response;
+
     }
 }

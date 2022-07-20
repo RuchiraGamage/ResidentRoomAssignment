@@ -3,11 +3,9 @@ package com.company.ResidentRoomManagement.util;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 @Getter
 @Setter
-public class Error implements Serializable {
+public class Error {
     public static final int SUCCESS = 1;
     public static final int ERROR = -1;
     public static final int WARNING = 0;

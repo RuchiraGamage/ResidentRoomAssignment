@@ -30,7 +30,7 @@ public interface FacilityController extends BaseController<Facility> {
     @Operation( summary = Constants.FACILITY_APIS + "add room to facility by admin",
             description = "add room to facility by admin",
             responses = { @io.swagger.v3.oas.annotations.responses.ApiResponse( responseCode = "200", description = "add room to facility by admin" ) } )
-    @PostMapping(value = "/add/{userId}/room/{roomId}")
-    ResponseEntity<ApiResponse> addRoomToFacility( @PathVariable(value = "userId") Long adminId, @PathVariable(value = "roomId") Long roomId,
+    @PostMapping(value = "/add/{addedBy}/room/{roomId}")
+    ResponseEntity<ApiResponse> addRoomToFacility( @PathVariable(value = "addedBy") Long adminId, @PathVariable(value = "roomId") Long roomId,
                                                    @RequestBody FacilityDTO facilityDTO);
 }

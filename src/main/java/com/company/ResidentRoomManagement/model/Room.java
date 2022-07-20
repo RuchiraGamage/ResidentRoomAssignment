@@ -23,22 +23,21 @@ import java.util.List;
 @Table(name = "tbl_room")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Room extends BaseEntity {
+
     private String roomCode;
 
     private int status;
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_type_id")
+    @JsonIgnoreProperties(value = {"rooms"})
     private RoomType roomType;
 
-    @JsonIgnoreProperties({"rooms", "facilityAdmin"})
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "rooms")
-    private List<Facility> facilities = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true, mappedBy = "room")
-    private List<Resident> residents = new ArrayList<>();
+    @OneToMany(mappedBy = "room",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"room"})
+    private List<Resident> residents;
 
     public Room(){}
 
