@@ -13,7 +13,7 @@ Create the database with name "resident_room_db" in your MYSQL database
 ```
 
 ```
-Use provided resident_db_dump.sql in the repository for inset data to the database if needed
+Use provided resident_db_dump.sql in the repository for insert data to the database if needed
 ```
 
 ```
