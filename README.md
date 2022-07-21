@@ -12,6 +12,9 @@ Get started with this project by following the below steps
 Create the database with name "resident_room_db" in your MYSQL database
 ```
 
+```
+Use provided resident_db_dump.sql in the repository for inset data to the database if needed
+```
 
 ```
 Provide db credentials in application.properties file
