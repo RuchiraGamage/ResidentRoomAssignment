@@ -1,8 +1,7 @@
 package com.company.ResidentRoomManagement.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 
@@ -10,10 +9,9 @@ import javax.persistence.*;
  * Entity for Resident
  */
 
-@Getter
-@Setter
 @Entity
 @Table(name = "tbl_resident")
+@Data
 public class Resident extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)

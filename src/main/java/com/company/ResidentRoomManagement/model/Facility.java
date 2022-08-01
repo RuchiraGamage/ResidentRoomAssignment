@@ -1,9 +1,10 @@
 package com.company.ResidentRoomManagement.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,11 +13,12 @@ import java.util.List;
  * Entity for Facility
  */
 
-@Getter
-@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tbl_facility")
+@Data
+@Builder
 public class Facility extends BaseEntity {
 
     private String name;

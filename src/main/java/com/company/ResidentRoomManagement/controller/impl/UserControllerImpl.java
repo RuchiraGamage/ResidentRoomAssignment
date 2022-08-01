@@ -31,4 +31,17 @@ public class UserControllerImpl implements UserController {
 
         return response;
     }
+
+    @Override
+    public ResponseEntity<ApiResponse> getUserById(Long userId) {
+        ResponseEntity<ApiResponse> response = null;
+        try {
+            response = new ResponseEntity<>(new ApiResponse(true,"User found",userService.findUserById(userId)),HttpStatus.OK);
+
+        }catch (Exception e){
+            response = new ResponseEntity<>(new ApiResponse(Error.ERROR, false,e.getMessage(), null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return response;
+    }
 }

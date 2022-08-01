@@ -6,9 +6,7 @@ import com.company.ResidentRoomManagement.util.Constants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(value = "/user")
 public interface UserController {
@@ -19,4 +17,11 @@ public interface UserController {
             responses = { @io.swagger.v3.oas.annotations.responses.ApiResponse( responseCode = "200", description = "register new resident or admin" ) } )
     @PostMapping
     ResponseEntity<ApiResponse> registerNewUser(@RequestBody User user);
+
+    @Tag( description = "User based operations", name = Constants.USER_APIS )
+    @Operation( summary = Constants.USER_APIS + "Get user by id",
+            description = "Get user by id",
+            responses = { @io.swagger.v3.oas.annotations.responses.ApiResponse( responseCode = "200", description = "Get user by id" ) } )
+    @GetMapping("{user_id}")
+    ResponseEntity<ApiResponse> getUserById(@PathVariable(value = "user_id") Long userId);
 }

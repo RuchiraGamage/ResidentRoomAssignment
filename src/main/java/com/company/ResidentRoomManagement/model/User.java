@@ -2,19 +2,24 @@ package com.company.ResidentRoomManagement.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "tbl_user")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@Builder
+@AllArgsConstructor
 public class User extends BaseEntity{
 
     @Column(nullable = false)

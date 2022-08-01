@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @RequestMapping(value ="/roomType")
 public interface RoomTypeController {
     @Tag( description = "Room Type based operations", name = Constants.ROOM_TYPE_APIS )
@@ -17,5 +19,5 @@ public interface RoomTypeController {
             description = "register new room type",
             responses = { @io.swagger.v3.oas.annotations.responses.ApiResponse( responseCode = "200", description = "register new room type" ) } )
     @PostMapping
-    ResponseEntity<ApiResponse> register(@RequestBody RoomType roomType);
+    ResponseEntity<ApiResponse> register(@Valid @RequestBody RoomType roomType);
 }
