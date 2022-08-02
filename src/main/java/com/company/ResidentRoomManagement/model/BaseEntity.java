@@ -22,18 +22,16 @@ public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
     /*
-    @SequenceGenerator(
-            name = "sequence",
-            sequenceName = "sequence",
-            allocationSize = 1
-    )
+    @SequenceGenerator(name = "sequence", sequenceName = "sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     */
 
+    /*
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+     */
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)

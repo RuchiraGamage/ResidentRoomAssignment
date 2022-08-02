@@ -1,15 +1,9 @@
 package com.company.ResidentRoomManagement.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -24,7 +18,13 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
+@ToString(exclude = "rooms")
 public class RoomType extends BaseEntity {
+
+    @Id
+    @SequenceGenerator(name = "room_type_sequence",sequenceName = "room_type_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_type_sequence" )
+    private long id;
 
     @NotNull(message = "room type name can not be null")
     @NotEmpty(message = "room type name can not be empty")

@@ -21,6 +21,15 @@ import java.util.List;
 @Builder
 public class Facility extends BaseEntity {
 
+    @Id
+    @SequenceGenerator(
+            name = "facility_sequence",
+            sequenceName = "facility_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "facility_sequence")
+    private long id;
+
     private String name;
 
     private String code;
@@ -29,7 +38,8 @@ public class Facility extends BaseEntity {
 
     private double price;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_di", referencedColumnName = "id")
     private User facilityAdmin;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

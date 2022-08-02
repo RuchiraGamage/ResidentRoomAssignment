@@ -1,13 +1,16 @@
 package com.company.ResidentRoomManagement.repository;
 
 import com.company.ResidentRoomManagement.model.Resident;
+import com.company.ResidentRoomManagement.model.User;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
+@DataJpaTest
 class ResidentRepositoryTest {
 
     @Autowired
@@ -26,5 +29,13 @@ class ResidentRepositoryTest {
     @Test
     public void findByUserId(){
         Resident resident = residentRepository.findByUserId(1L);
+    }
+
+    @Test
+    public void createResident(){
+        User user = User.builder().userGroupId(2).email("testemai@gmail.com").firstName("testResident").build();
+        Resident resident = Resident.builder().user(user).build();
+
+        residentRepository.save(resident);
     }
 }

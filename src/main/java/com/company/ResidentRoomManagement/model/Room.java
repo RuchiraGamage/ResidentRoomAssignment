@@ -2,7 +2,9 @@ package com.company.ResidentRoomManagement.model;
 
 import com.company.ResidentRoomManagement.model.DTO.RoomDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,7 +17,14 @@ import java.util.List;
 @Table(name = "tbl_room")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Room extends BaseEntity {
+
+    @Id
+    @SequenceGenerator(name = "room_sequence",sequenceName = "room_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_sequence" )
+    private long id;
 
     private String roomCode;
 
@@ -31,8 +40,6 @@ public class Room extends BaseEntity {
     @OneToMany(mappedBy = "room",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = {"room"})
     private List<Resident> residents;
-
-    public Room(){}
 
     public Room(RoomDTO roomDTO) {
         this.roomCode = roomDTO.getRoomCode();
