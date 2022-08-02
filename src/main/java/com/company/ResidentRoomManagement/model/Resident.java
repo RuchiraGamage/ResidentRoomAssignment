@@ -23,5 +23,7 @@ public class Resident extends BaseEntity {
     @JsonIgnoreProperties(value = {"residents"})
     private Room room;
 
+    private String desc;
+
     public Resident(){}
 }
