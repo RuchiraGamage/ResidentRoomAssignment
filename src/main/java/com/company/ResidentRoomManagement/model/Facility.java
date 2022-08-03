@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +47,13 @@ public class Facility extends BaseEntity {
     @JoinTable(name = "tbl_facility_room", joinColumns = {@JoinColumn(name = "facility_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "room_id", referencedColumnName = "id")})
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<Room> rooms;
+
+    public void addRoom(Room room){
+        if (rooms == null)
+            rooms = new ArrayList<>();
+
+        rooms.add(room);
+    }
 
     public Facility(String name, String code, String description, double price) {
         this.name = name;

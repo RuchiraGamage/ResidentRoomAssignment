@@ -29,7 +29,7 @@ public class Resident extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id")
     @JsonIgnoreProperties(value = {"residents"})
     private Room room;

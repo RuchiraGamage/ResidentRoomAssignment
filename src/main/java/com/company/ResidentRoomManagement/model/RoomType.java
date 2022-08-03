@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@ToString(exclude = "rooms")
+//@ToString(exclude = "rooms")
 public class RoomType extends BaseEntity {
 
     @Id
@@ -26,16 +26,18 @@ public class RoomType extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_type_sequence" )
     private long id;
 
-    @NotNull(message = "room type name can not be null")
-    @NotEmpty(message = "room type name can not be empty")
+    //@NotNull(message = "room type name can not be null")
+    //@NotEmpty(message = "room type name can not be empty")
     private String roomTypeName;
 
     private String description;
 
     private double price;
 
+    /*
     @OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = {"roomType"}, allowSetters = true)
     private List<Room> rooms;
+     */
 
 }
