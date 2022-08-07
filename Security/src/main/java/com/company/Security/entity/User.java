@@ -1,5 +1,6 @@
 package com.company.Security.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class User {
     private String email;
     private String userName;
     @Column(length = 60)
+    @JsonIgnore
     private String password;
     private String role;
     private boolean isEnable = false;
