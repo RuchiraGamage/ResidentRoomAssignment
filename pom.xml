@@ -20,10 +20,10 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>
-			Security
+			security-client
 		</module>
 		<module>
-			autherization-server
+			authorization-server
 		</module>
 	</modules>
 
