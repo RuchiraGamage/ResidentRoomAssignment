@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String[] WHITE_LISTED_URLS = {
-            "/register",
-            "/verifyRegistration"
+            "/auth/register",
+            "/auth/verifyRegistration",
+            "/auth/user/*/resendVerificationToken",
+            "/auth/request/passwordReset",
+            "/auth/passwordReset"
     };
 
     @Override
