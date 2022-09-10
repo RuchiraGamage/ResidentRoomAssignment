@@ -14,17 +14,14 @@
 	<name>ResidentRoomManagement</name>
 	<description>Project for Resident Room Management</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<packaging>pom</packaging>
 	<modules>
-		<module>
-			security-client
-		</module>
-		<module>
-			authorization-server
-		</module>
+		<module>authorization-server</module>
+		<module>common</module>
+		<module>spring-security-client</module>
 	</modules>
 
 	<dependencies>
@@ -86,6 +83,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
