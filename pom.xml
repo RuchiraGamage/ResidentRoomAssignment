@@ -22,6 +22,7 @@
 		<module>authorization-server</module>
 		<module>common</module>
 		<module>spring-security-client</module>
+		<module>Oauth-resource-server</module>
 	</modules>
 
 	<dependencies>

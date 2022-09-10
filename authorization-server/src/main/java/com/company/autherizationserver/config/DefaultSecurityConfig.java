@@ -17,13 +17,16 @@ public class DefaultSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+        http.authorizeRequests(authorizeRequests ->
+                authorizeRequests.anyRequest().authenticated()
+        )
                 .formLogin(Customizer.withDefaults());
         return http.build();
     }
 
     @Autowired
-    public void bindAuthenticationProvider(AuthenticationManagerBuilder authenticationManagerBuilder){
-        authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
+    public void bindAuthenticationProvider(AuthenticationManagerBuilder authenticationManagerBuilder) {
+        authenticationManagerBuilder
+                .authenticationProvider(customAuthenticationProvider);
     }
 }
